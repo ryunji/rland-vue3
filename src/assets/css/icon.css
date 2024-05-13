@@ -1,0 +1,6 @@
+.icon\:local_cafe::before{
+/*  -webkit-mask-image: url(/image/icon/local_cafe_24dp_FILL0_wght400_GRAD0_opsz24.svg);            public에 이미지를 넣었을 때, 서버로 요청하는 방법.
+    mask-image: url(/image/icon/local_cafe_24dp_FILL0_wght400_GRAD0_opsz24.svg); */
+    -webkit-mask-image: url(@/assets/image/icon/local_cafe_24dp_FILL0_wght400_GRAD0_opsz24.svg);
+    mask-image: url(@/assets/image/icon/local_cafe_24dp_FILL0_wght400_GRAD0_opsz24.svg);
+}
