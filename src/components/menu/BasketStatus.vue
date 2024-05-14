@@ -1,12 +1,16 @@
 <script setup>
-    defineProps(["price"])  //속성변수
+  //defineProps(["price"])          →  속성변수
+    const props = defineProps({
+        price:Number
+    })
 </script>
 <template>
     <section class="basket-status">
         <h1 class="d:none">Basket Bar</h1>
         <dl class="ph:3">
             <dt>금액</dt>
-            <dd class="ml:2">{{price}}원</dd>
+       <!-- <dd class="ml:2">{{price}}원</dd> -->
+            <dd class="ml:2">{{props.price}}원</dd>
             <dt class="d:none">수량</dt>
             <dd class="ml:auto">
                 <a href="/basket/list" 

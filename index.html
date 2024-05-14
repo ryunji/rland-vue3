@@ -5,11 +5,15 @@
        <link rel="icon" href="/favicon.ico">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <title>Rland에 오신 것을 환영합니다.</title>
-       <link type="text/css" href="https://www.newlecture.com/dist/v0.2.0/style.css" rel="stylesheet">
-  <!-- <link type="text/css" href="/assets/css/icon.css" ref="stylesheet"> : 여기다 적용하면 불러오지 못함, main.js에서 import 해야 함.-->
+       <!-- <link type="text/css" href="https://www.newlecture.com/dist/v0.2.0/style.css" rel="stylesheet"> -->
+       <link type="text/css" href="https://www.newlecture.com/dist/v0.2.1/style.min.css" rel="stylesheet">
+       <script src="https://www.newlecture.com/dist/v0.2.1/script.min.js"></script>
+       <!-- <link type="text/css" href="/assets/css/icon.css" ref="stylesheet"> : 여기다 적용하면 불러오지 못함, main.js에서 import 해야 함.-->
   </head>
   <body>
-    <div id="app" class="n-layout"></div>
+    <div id="app" class="n-layout
+                        n-layout-aside-pos:right
+                        n-layout-aside-pos:resizable"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -12,14 +12,16 @@
     
     const basketInfo = reactive({
           
-          price  : 0
-        , amount : 0
+        //계산을 장바구니에게 책임을 넘기겠다.
+       /*   price  : 0
+        , amount : 0*/
     });
     
     // -- Event Handelr --
     function addCartClickHandler(menu){
 
-        console.log("dfsdfsdf : ", menu);
+        //basketInfo.price += menu.price;
+        basketInfo.price = menu.price;
     }
 
     //Life Cycle Handler : 라이프사이클, 이벤트 영역 
@@ -87,7 +89,8 @@
             <!-- Pager -->
             <Pager/>
             <!-- basket status -->
-            <BasketStatus price="basketInfo.price"/>
+       <!-- <BasketStatus :price="basketInfo.price"/> -->
+            <BasketStatus :list="basketInfo.list"/>
         </main>
     </div>
 </template>

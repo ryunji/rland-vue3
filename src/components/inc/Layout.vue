@@ -6,7 +6,7 @@ import Footer from './Footer.vue';
 <!-- root header -->
 <template>
      <Header/>
-<!-- <aside>사이드<aside> -->
+<!-- <aside>사이드</aside> -->
      <RouterView/>              <!-- 변경이 될 부분에 넣는다  -->
      <Footer/>
 </template>
