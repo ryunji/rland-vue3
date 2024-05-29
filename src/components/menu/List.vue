@@ -8,6 +8,7 @@
 
           list : [{}, {}]
         , count : 0
+        , query : ""
     }); 
     
     const basketInfo = reactive({
@@ -37,6 +38,15 @@
             // });
         });
     });
+
+    function test(value){
+        model.query = value;
+        console.log("test : " , value);
+    }
+
+    function test2(value){
+        console.log("test2 : ", value);
+    }
 </script>
 <template>
     <div class="n-main">                                    <!-- 이렇게 써주어야 영역이 펼쳐져 차지함.-->
@@ -45,7 +55,7 @@
             <h1 class="d:none">메뉴 검색 목록</h1>
             <div>
                 <!-- 필터 영역 -->
-                <Filter/>
+                <Filter @queryClick="test" @categoryChange="test2"/>
                 <!-- ------------------------------------------------------ -->
 
                 <section class="menu-card-list" id="menu-card-list">

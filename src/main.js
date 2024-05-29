@@ -13,6 +13,7 @@ import Layout from './components/inc/Layout.vue'
 import AdminLayout from './components/admin/inc/Layout.vue'
 
 const router = createRouter({
+    //history: createMemoryHistory()
       history: createWebHistory()
     , routes:[
               {

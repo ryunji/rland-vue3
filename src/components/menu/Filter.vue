@@ -3,7 +3,9 @@
     const  model = reactive({
 
           categories  : [{}, {}]
+        , list:[]
         , count : 0
+        , query : ""
     });
 
     onMounted(()=>{
@@ -26,7 +28,9 @@
                 <li><a class="sm:deco md:deco sm:icon-filter_list"                                    
                         href="list">전체메뉴</a></li>
                 <li v-for="m of model.categories">
-                    <a class="d:none md:d:inline current" href="?c=1">
+                    <a class="d:none md:d:inline current"
+                    @click.prevent="$emit('categoryChange', '')" 
+                    href="?c=1">
                         {{ m.name }}
                     </a>
                 </li>
@@ -37,8 +41,8 @@
             <form action="list" method="get">
                 <fieldset>
                     <legend class="d:none">이름 검색</legend>
-                    <input class="query-input" type="text" placeholder="메뉴 검색" name="q" value="">
-                    <button class="icon icon-find">검색</button>
+                    <input class="query-input" type="text" placeholder="메뉴 검색" name="q" v-model="model.query">
+                    <button class="icon icon-find" @click.prevent="$emit('queryClick', model.query)">검색</button>
                 </fieldset>
             </form>
         </section>
