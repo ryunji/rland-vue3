@@ -1,13 +1,23 @@
 <script setup>
-import { GoogleLogin } from 'vue3-google-login';
+import { GoogleLogin, googleTokenLogin } from 'vue3-google-login';
 
-const callback = (response) => {
-  // This callback will be triggered when the user selects or login to
-  // his Google account from the popup
-  console.log("Handle the response", response)
+const loginHandler = () => {
+
+    googleTokenLogin()
+    .then((response) =>{
+
+        console.log("Handle the response", response)
+        let token = response.access_token;
+        console.log(token);
+
+        let url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`;
+        fetch(url)
+        .then(resp=>resp.json())
+        .then(userinfo=>{
+            console.log(userinfo);
+        })
+    });
 }
-
-
 </script>
 
 <template>
@@ -28,8 +38,8 @@ const callback = (response) => {
             <button>로그인</button>
         </div> 
         <div>
-            <GoogleLogin/>
-            <a href="">구글 로그인</a>
+            <!-- <GoogleLogin/> -->
+            <a href="" class="btn btn-google" @click.prevent="loginHandler">구글 로그인</a>
         </div> 
     </form>
 </template>
