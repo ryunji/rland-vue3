@@ -1,5 +1,5 @@
 <script setup>
-    import{onMounted, reactive , ref} from 'vue'
+    import{computed, onMounted, reactive , ref, watch} from 'vue'
     import BasketStatus from './BasketStatus.vue';
     import Filter from './Filter.vue';
     import Pager from '../inc/Pager.vue';
@@ -8,9 +8,25 @@
 
           list : [{}, {}]
         , count : 0
-        , query : ""
+      //, query : ""
     }); 
     
+    //const query = ref(""); 참조하는걸 대체하면 안돼. 속성값으로 넣고 대체해야 함.
+    
+
+   const query = ref("");
+          //query.value = 2;
+    const state = reactive({query:""});
+
+    watch(query, ()=>{
+
+        console.log("hehe");
+    });
+
+    const x = ref(0);
+    //const y = computed();
+    const y = computed(()=> x.value+3); // computed(()=> x.value+3); //x.value+3;
+
     const basketInfo = reactive({
           
         //계산을 장바구니에게 책임을 넘기겠다.
@@ -18,6 +34,8 @@
         , amount : 0*/
     });
     
+
+
     // -- Event Handelr --
     function addCartClickHandler(menu){
 
@@ -40,7 +58,7 @@
     });
 
     function test(value){
-        model.query = value;
+        query.value = value;
         console.log("test : " , value);
     }
 
@@ -59,6 +77,7 @@
                 <!-- ------------------------------------------------------ -->
 
                 <section class="menu-card-list" id="menu-card-list">
+                    <div><input type="text" v-model.number="x"><sapn>{{y}}</sapn></input></div>
                     <h1 class="d:none">메뉴 목록</h1>
                     <div class="content fade">
                         <section class="menu-card" v-for="m of model.list">

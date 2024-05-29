@@ -12,6 +12,7 @@
                 <li><RouterLink class="icon icon:house      md:d:inline-block"        to="/index">home</RouterLink></li>          
                 <li><RouterLink class="icon icon:local_cafe md:d:inline-block"        to="/menu/list">메뉴</RouterLink></li>        
                 <li><RouterLink class="icon icon:user       d:none md:d:inline-block" to="/admin/index">관리자</RouterLink></li>
+                <li><RouterLink class="icon icon:user       d:none md:d:inline-block" to="/user/login">로그인</RouterLink></li>
             </ul>
         </nav>
     </header>
