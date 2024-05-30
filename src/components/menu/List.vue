@@ -3,7 +3,11 @@
     import BasketStatus from './BasketStatus.vue';
     import Filter from './Filter.vue';
     import Pager from '../inc/Pager.vue';
-    
+    //import userDetail from '../store/UserDetails';
+    import {useUserDetailsStore} from '../store/UserDetails';
+
+//저장소에서 꺼내써야 한다.
+const userDetails = useUserDetailsStore();
     const  model = reactive({
 
           list : [{}, {}]
@@ -75,9 +79,9 @@
                 <!-- 필터 영역 -->
                 <Filter @queryClick="test" @categoryChange="test2"/>
                 <!-- ------------------------------------------------------ -->
-
+                <div></div>
                 <section class="menu-card-list" id="menu-card-list">
-                    <div><input type="text" v-model.number="x"><sapn>{{y}}</sapn></input></div>
+                    <div><input type="text" v-model.number="x"/><sapn>{{y}}</sapn>{{ userDetails.userName }}</div>
                     <h1 class="d:none">메뉴 목록</h1>
                     <div class="content fade">
                         <section class="menu-card" v-for="m of model.list">

@@ -1,6 +1,8 @@
 //설정만 하는 곳.
 import { createApp } from 'vue'
 import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import { createPinia } from 'pinia';
+import { useUserDetailsStore } from './components/store/UserDetails';
 import './assets/css/icon.css';
 
 import App from './App.vue'
@@ -12,6 +14,12 @@ import Layout from './components/inc/Layout.vue'
 import AdminLayout from './components/admin/inc/Layout.vue'
 import vue3GoogleLogin from 'vue3-google-login'
 import UserLogin   from './components/user/Login.vue'
+const pinia = createPinia();
+const app = createApp(App)
+app.use(pinia)        //pinia를 router 밑에 설정해야 함?
+
+
+const userDetails = useUserDetailsStore();
 
 const router = createRouter({
     //history: createMemoryHistory()
@@ -33,16 +41,24 @@ const router = createRouter({
             , {
                 path:"/admin", children:[
                   {path:"index",component:AdminIndex}
-                ], component:AdminLayout
+                ]
+                , component:AdminLayout
+                , beforeEnter:(to, from, next)=>{ //라이팅 전에 실행될게 있니/ 필터 역할.
+                
+                  //userDetails
+                  console.log("before...hehe");
+                  if(!userDetails.isAuthenticated())
+                    next("user/login");
+                } 
               }
       ]
 })
 
-const app = createApp(App)
 app.use(vue3GoogleLogin, {
   clientId: '663368504469-j5jg45a0815k4t0co8cj45mjevlr5m88.apps.googleusercontent.com'
 })
 app.use(router)        //router 장착
+
 app.mount('#app')
 
 /*
